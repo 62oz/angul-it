@@ -1,0 +1,11 @@
+<p>captcha-page works!</p>
+<app-emoji-sequence
+  *ngIf="challenges[currentChallengeIndex].type === 'emoji-sequence'"
+  (challengeCompleted)="onChallengeCompleted($event)">
+</app-emoji-sequence>
+
+
+<!-- Navigation buttons -->
+<button (click)="retryChallenge()" *ngIf="isChallengeCompleted">Retry</button>
+<button (click)="moveToNextChallenge()" *ngIf="isChallengeCompleted && currentChallengeIndex < challenges.length - 1">Next</button>
+<button (click)="moveToPreviousChallenge()" *ngIf="currentChallengeIndex > 0">Previous</button>

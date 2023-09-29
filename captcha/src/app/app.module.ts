@@ -3,14 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CaptchaPageComponent } from './captcha-page/captcha-page.component';
+import { EmojiSequenceComponent } from './captcha-challenges/emoji-sequence/emoji-sequence.component';
+import { ColourMatchingComponent } from './captcha-challenges/colour-matching/colour-matching.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FindTheNoteComponent } from './captcha-challenges/find-the-note/find-the-note.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CaptchaPageComponent,
+    EmojiSequenceComponent,
+    ColourMatchingComponent,
+    FindTheNoteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
