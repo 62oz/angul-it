@@ -43,7 +43,7 @@ export class EmojiSequenceComponent implements OnInit {
       this.ngOnInit();
     }
     this.challengeCompleted.emit(isCorrect);
-}
+  }
 
   resetChallenge(): void {
     this.selectedAnswer = null;

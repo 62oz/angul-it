@@ -1,1 +1,6 @@
-<p>find-the-note works!</p>
+<h2>Find the note:</h2>
+<button (click)="playNote()">Play Note</button>
+
+<app-piano (noteClicked)="selectedAnswer = $event"></app-piano>
+
+<button (click)="submitAnswer()" [disabled]="selectedAnswer === null">Submit</button>

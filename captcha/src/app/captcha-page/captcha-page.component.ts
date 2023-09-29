@@ -11,7 +11,7 @@ export class CaptchaPageComponent {
   currentChallengeIndex = 0;
   challenges = [
     { type: 'emoji-sequence' },
-    { type: 'spot-the-difference' },
+    { type: 'find-the-note' },
     { type: 'colour-matching' }
   ];
 

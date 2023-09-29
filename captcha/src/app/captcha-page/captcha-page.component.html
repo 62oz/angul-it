@@ -4,6 +4,11 @@
   (challengeCompleted)="onChallengeCompleted($event)">
 </app-emoji-sequence>
 
+<app-find-the-note
+  *ngIf="challenges[currentChallengeIndex].type === 'find-the-note'"
+  (challengeCompleted)="onChallengeCompleted($event)">
+</app-find-the-note>
+
 
 <!-- Navigation buttons -->
 <button (click)="retryChallenge()" *ngIf="isChallengeCompleted">Retry</button>

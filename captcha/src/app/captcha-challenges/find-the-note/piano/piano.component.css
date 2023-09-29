@@ -1,0 +1,19 @@
+.piano {
+    display: flex;
+  }
+
+  .white-key {
+    width: 60px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid black;
+  }
+
+  .black-key {
+    width: 40px;
+    height: 120px;
+    background-color: black;
+    margin-left: -20px;
+    margin-right: -20px;
+    z-index: 1;
+  }
