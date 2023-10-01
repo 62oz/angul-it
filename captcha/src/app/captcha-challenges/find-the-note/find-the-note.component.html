@@ -1,6 +1,11 @@
-<h2>Find the note:</h2>
-<button (click)="playNote()">Play Note</button>
+<body id="find_the_note_body">
+    <h2>Find the note:</h2>
+    <div class="custom_button" id="play" (click)="playNote()">-> Play Note <-</div>
 
-<app-piano (noteClicked)="selectedAnswer = $event"></app-piano>
+    <div class="container">
+        <app-piano (noteClicked)="selectedAnswer = $event"></app-piano>
+    </div>
 
-<button (click)="submitAnswer()" [disabled]="selectedAnswer === null">Submit</button>
+    <div id="submit" class="custom_button" (click)="submitAnswer()" *ngIf="selectedAnswer != null">Submit</div>
+
+</body>

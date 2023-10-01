@@ -1,7 +1,9 @@
 <div class="piano">
-    <button *ngFor="let key of keys"
-         [class]="key.type"
-         (click)="onKeyClick(key.note)">
-      {{ key.note }}
-    </button>
-  </div>
+  <button class="piano_key"
+          [class.active]="activeKey === key.note"
+          *ngFor="let key of keys"
+          [class]="key.type"
+          (click)="onKeyClick(key.note)">
+    {{ key.note }}
+  </button>
+</div>

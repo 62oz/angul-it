@@ -1,0 +1,33 @@
+@font-face {
+    font-family: Antikythera;
+    src: url("src/assets/AntikytheraItalic-m45G.ttf");
+}
+
+
+body {
+    background-color: cadetblue;
+    position: absolute;
+    height: 100%;
+    margin: 0;
+    font-family: Antikythera;
+
+}
+
+h1 {
+    color: white;
+    font-size: 80px;
+    margin-top: 17%;
+    margin-left: 10%;
+}
+
+.custom_button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin-left: 10%;
+    margin-top: 5%;
+    text-align: right;
+    font-size: 40px;
+    border-radius: 12px;
+    cursor: pointer;
+}

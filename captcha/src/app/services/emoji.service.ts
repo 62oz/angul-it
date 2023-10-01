@@ -20,7 +20,7 @@ export class EmojiService {
     );
   }
 
-  fetchEmojisInRandomCategory(count: number): Observable<string[]> {
+  fetchEmojisInRandomCategory(count: number): Observable<{ category: string, emojis: string[] }> {
     return this.fetchCategories().pipe(
       switchMap(categories => {
         let randomCategory = categories[Math.floor(Math.random() * categories.length)];
@@ -31,7 +31,7 @@ export class EmojiService {
               let randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
               randomEmojis.push(randomEmoji.character);
             }
-            return randomEmojis;
+            return { category: randomCategory, emojis: randomEmojis };
           }),
           catchError(error => {
             console.error(error);
@@ -40,14 +40,15 @@ export class EmojiService {
         );
       })
     );
-  }
+}
 
-  fetchRandomEmojis(count: number): Observable<string[]> {
-    return this.http.get<any[]>(EmojiService.base_url + "emojis?access_key=" + EmojiService.API_KEY).pipe(
-      map(emojis => {
+fetchRandomEmojis(count: number, excludeCategory: string): Observable<string[]> {
+  return this.http.get<any[]>(EmojiService.base_url + "emojis?access_key=" + EmojiService.API_KEY).pipe(
+    map(emojis => {
+        const filteredEmojis = emojis.filter(emoji => emoji.category !== excludeCategory);
         let randomEmojis: string[] = [];
         for (let i = 0; i < count; i++) {
-          let randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+          let randomEmoji = filteredEmojis[Math.floor(Math.random() * filteredEmojis.length)];
           randomEmojis.push(randomEmoji.character);
         }
         return randomEmojis;

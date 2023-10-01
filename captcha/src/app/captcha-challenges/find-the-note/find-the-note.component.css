@@ -1,0 +1,74 @@
+@font-face {
+    font-family: Antikythera;
+    src: url("src/assets/AntikytheraItalic-m45G.ttf");
+}
+
+body {
+    background-color: chocolate;
+    position: absolute;
+    height: 100%;
+    margin: 0;
+    bottom: 0;
+    top:0;
+    font-family: Antikythera;
+    width: 100%;
+    margin-top: -10%;
+}
+
+h2 {
+    color: white;
+    font-size: 50px;
+    margin-top: 17%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.custom_button {
+    color: white;
+    padding: 15px 32px;
+    margin-left: 10%;
+    margin-top: 5%;
+    text-align: right;
+    font-size: 40px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+  .select {
+    width: 1.2em;
+    height: 1.2em;
+    padding: 8px;  /* Adjust as needed */
+    text-align: center;
+    transition: all 0.3s ease;
+
+    /* Optional: Add a subtle shadow for depth */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Add a hover effect to give a visual indication of interactivity */
+  .select:hover {
+    background-color: #e6f7ff;  /* A light blue shade, adjust to your preference */
+    cursor: pointer;  /* Change cursor to hand icon on hover */
+  }
+
+  /* If you want to highlight the selected item */
+  .select.active {
+    background-color: #ffffff;
+    color: white;
+  }
+
+ #play {
+    text-align: left;
+ }
+
+ #submit {
+  margin-bottom: 10%;
+ }

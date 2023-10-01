@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { forkJoin } from 'rxjs';
+import { forkJoin, map, switchMap } from 'rxjs';
 import { EmojiService } from 'src/app/services/emoji.service';
 
 @Component({
@@ -21,19 +21,31 @@ export class EmojiSequenceComponent implements OnInit {
   constructor(private emojiService: EmojiService) {}
 
   ngOnInit(): void {
-    forkJoin({
-      categoryEmojis: this.emojiService.fetchEmojisInRandomCategory(4),
-      randomEmojis: this.emojiService.fetchRandomEmojis(3)
-    }).subscribe(({ categoryEmojis, randomEmojis }) => {
-      this.challengeData.sequence = categoryEmojis.slice(0, 3);
+    const background = document.getElementById("all")!;
+    background.style.backgroundColor = "rebeccapurple";
 
-      const insertAt = Math.floor(Math.random() * 4);
-      randomEmojis.splice(insertAt, 0, categoryEmojis[3]);
-
-      this.challengeData.options = randomEmojis;
-      this.challengeData.answer = insertAt;
+    this.emojiService.fetchEmojisInRandomCategory(4).pipe(
+      switchMap(({ category, emojis }) => {
+        const sequence = emojis.slice(0, 3);
+        return this.emojiService.fetchRandomEmojis(3, category).pipe(
+          map(randomEmojis => {
+            const insertAt = Math.floor(Math.random() * 4);
+            randomEmojis.splice(insertAt, 0, emojis[3]);
+            return {
+              sequence,
+              options: randomEmojis,
+              answer: insertAt
+            };
+          })
+        );
+      })
+    ).subscribe(({ sequence, options, answer }) => {
+      this.challengeData.sequence = sequence;
+      this.challengeData.options = options;
+      this.challengeData.answer = answer;
     });
-  }
+}
+
 
 
   submitAnswer(): void {

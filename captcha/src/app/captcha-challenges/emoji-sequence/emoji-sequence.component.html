@@ -1,12 +1,24 @@
-<h4>Which emoji belongs to the category?</h4>
+<body id="emoji_sequence_body">
+  <h4>Which emoji belongs to the category?</h4>
 
-<div>
-  Sequence:
-  <span *ngFor="let emoji of challengeData.sequence">{{ emoji }}</span>
-</div>
+  <div class="container">
+    <div id="sequence">
+      Sequence:
+      <span class="emoji" *ngFor="let emoji of challengeData.sequence">{{ emoji }}</span>
+    </div>
 
-<div *ngFor="let option of challengeData.options; let i = index">
-  <button (click)="selectedAnswer = i">{{ option }}</button>
-</div>
+    <div class="button_grid">
+      <div class="custom_button select"
+        [class.active]="selectedAnswer === i"
+        *ngFor="let option of challengeData.options; let i = index">
+        <div (click)="selectedAnswer = i">{{ option }}</div>
+      </div>
+    </div>
 
-<button (click)="submitAnswer()" [disabled]="selectedAnswer === null">Submit</button>
+    <div class="custom_button" id="submit" (click)="submitAnswer()" *ngIf="selectedAnswer != null">Submit</div>
+
+  </div>
+
+
+
+</body>

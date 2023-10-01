@@ -1,4 +1,16 @@
-<p>captcha-page works!</p>
+
+<div id="all">
+  <div id="lives"></div>
+
+<!-- Navigation buttons -->
+<div id="nav_buttons">
+  <div class="custom_button" (click)="moveToPreviousChallenge()" *ngIf="currentChallengeIndex > 0">Previous</div>
+  <div class="custom_button" (click)="retryChallenge()" *ngIf="isChallengeCompleted">Retry</div>
+  <div class="custom_button" (click)="moveToNextChallenge()"
+  *ngIf="(isChallengeCompleted && currentChallengeIndex < challenges.length - 1)
+  || completedChallenges > currentChallengeIndex">Next</div>
+</div>
+
 <app-emoji-sequence
   *ngIf="challenges[currentChallengeIndex].type === 'emoji-sequence'"
   (challengeCompleted)="onChallengeCompleted($event)">
@@ -9,8 +21,28 @@
   (challengeCompleted)="onChallengeCompleted($event)">
 </app-find-the-note>
 
+<app-colour-matching
+  *ngIf="challenges[currentChallengeIndex].type === 'colour-matching'"
+  (challengeCompleted)="onChallengeCompleted($event)">
+</app-colour-matching>
 
-<!-- Navigation buttons -->
-<button (click)="retryChallenge()" *ngIf="isChallengeCompleted">Retry</button>
-<button (click)="moveToNextChallenge()" *ngIf="isChallengeCompleted && currentChallengeIndex < challenges.length - 1">Next</button>
-<button (click)="moveToPreviousChallenge()" *ngIf="currentChallengeIndex > 0">Previous</button>
+<div class="popup" *ngIf="isChallengeCompleted && currentChallengeIndex == challenges.length - 1">
+  <div class="popup__content">
+    <div class="popup__title">Congratulations!</div>
+    <div class="popup__text">You are a human being.</div>
+  </div>
+  <div class="custom_button" id="play_again" (click)="retryChallenge()">Play again</div>
+</div>
+
+<div class="popup" *ngIf="lives == 0">
+  <div class="popup__content">
+    <div class="popup__title">Congratulations!</div>
+    <div class="popup__text">You are not a human being.</div>
+  </div>
+  <div class="custom_button" id="play_again" (click)="retryChallenge()">Play again</div>
+</div>
+
+</div>
+
+
+

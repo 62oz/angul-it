@@ -26,8 +26,11 @@ export class PianoComponent {
 
   constructor(private pianoService: PianoService) {}
 
+  activeKey: string | null = null;
+
   onKeyClick(note: string) {
     this.noteClicked.emit(note);
+    this.activeKey = this.activeKey === note ? null : note;
     this.pianoService.playNote(note);  // Play the note sound
   }
 

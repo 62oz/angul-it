@@ -20,6 +20,8 @@ export class FindTheNoteComponent implements OnInit {
 
   ngOnInit(): void {
     this.challengeData.answer = this.challengeData.allNotes[Math.floor(Math.random() * this.challengeData.allNotes.length)];
+    const background = document.getElementById("all")!;
+    background.style.backgroundColor = "chocolate";
   }
 
   playNote(): void {

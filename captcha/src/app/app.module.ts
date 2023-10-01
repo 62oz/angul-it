@@ -9,6 +9,7 @@ import { ColourMatchingComponent } from './captcha-challenges/colour-matching/co
 import { HttpClientModule } from '@angular/common/http';
 import { FindTheNoteComponent } from './captcha-challenges/find-the-note/find-the-note.component';
 import { PianoComponent } from './captcha-challenges/find-the-note/piano/piano.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PianoComponent } from './captcha-challenges/find-the-note/piano/piano.c
     EmojiSequenceComponent,
     ColourMatchingComponent,
     FindTheNoteComponent,
-    PianoComponent
+    PianoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
