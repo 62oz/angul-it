@@ -4,8 +4,9 @@
 
     <div class="container">
         <app-piano (noteClicked)="selectedAnswer = $event"></app-piano>
+        <div id="submit" class="custom_button" (click)="submitAnswer()" *ngIf="selectedAnswer != null">Submit</div>
+
     </div>
 
-    <div id="submit" class="custom_button" (click)="submitAnswer()" *ngIf="selectedAnswer != null">Submit</div>
 
 </body>

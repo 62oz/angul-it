@@ -9,7 +9,7 @@
 }
 
 svg {
-    background-color:rgb(28, 28, 28);
+    background-color:transparent;
     cursor: pointer;
     overflow: hidden;
     width: 100%;
@@ -20,6 +20,7 @@ svg {
     width: 100%;
     align-items: center;
     display: flex;
+    background-color: transparent;
 }
 
 

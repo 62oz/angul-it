@@ -32,6 +32,14 @@ export class CaptchaPageComponent implements AfterViewInit {
         this.lives_div.innerHTML += 'o';
       }
     }
+    // get completed challenges from session storage if it exists
+    const completedChallengesString = sessionStorage.getItem('completedChallenges');
+    if (completedChallengesString) {
+      this.completedChallenges = parseInt(completedChallengesString);
+    }
+    if (this.completedChallenges > this.currentChallengeIndex) {
+      this.currentChallengeIndex = this.completedChallenges;
+    }
   }
 
   onChallengeCompleted(isCorrect: boolean): void {
@@ -51,6 +59,8 @@ export class CaptchaPageComponent implements AfterViewInit {
       this.currentChallengeIndex++;
       if (this.currentChallengeIndex > this.completedChallenges) {
         this.completedChallenges = this.currentChallengeIndex;
+        // save to session storage
+        sessionStorage.setItem('completedChallenges', this.completedChallenges.toString());
       }
       this.isChallengeCompleted = false;
     }
@@ -73,7 +83,18 @@ export class CaptchaPageComponent implements AfterViewInit {
     } else {
       this.isChallengeCompleted = false;
       this.currentChallengeIndex = 0;
+      this.completedChallenges = 0;
+      sessionStorage.removeItem('completedChallenges');
     }
+  }
+
+  playAgain() {
+    this.isChallengeCompleted = false;
+    this.currentChallengeIndex = 0;
+    this.completedChallenges = 0;
+    sessionStorage.removeItem('completedChallenges');
+    this.lives = 3;
+    this.ngAfterViewInit();
   }
 }
 

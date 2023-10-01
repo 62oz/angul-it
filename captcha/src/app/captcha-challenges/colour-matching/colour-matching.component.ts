@@ -21,6 +21,7 @@ export class ColourMatchingComponent {
     background.style.backgroundColor = "rgb(28, 28, 28)";
 
     this.challengeData.answerHue = Math.floor(Math.random() * 361);
+    this.challengeData.currentHue = this.challengeData.answerHue - 100;
     this.gradientStops.push({
       offset: '0%',
       color: `hsl(0, 0%, 100%)`
